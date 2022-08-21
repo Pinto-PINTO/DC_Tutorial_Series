@@ -1,0 +1,6 @@
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\obj\Debug\DLL_Interface.csproj.AssemblyReference.cache
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\obj\Debug\DLL_Interface.csproj.CoreCompileInputs.cache
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\bin\Debug\DLL_Interface.pdb
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\obj\Debug\DLL_Interface.dll
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\obj\Debug\DLL_Interface.pdb
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Interface\obj\Debug\DLL_Interface.csproj.CopyComplete

@@ -1,0 +1,22 @@
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\DLL_Project_Tutorial1.dll
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\DLL_Project_Tutorial1.pdb
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.AssemblyReference.cache
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.CoreCompileInputs.cache
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.dll
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.pdb
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Http.dll
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Primitives.dll
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Http.pdb
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Primitives.pdb
+C:\Users\R E V O\source\repos\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.CopyComplete
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\DLL_Project_Tutorial1.dll
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\DLL_Project_Tutorial1.pdb
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Http.dll
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Primitives.dll
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Http.pdb
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\bin\Debug\System.ServiceModel.Primitives.pdb
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.AssemblyReference.cache
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.CoreCompileInputs.cache
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.csproj.CopyComplete
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.dll
+C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\DLL_Project_Tutorial1\obj\Debug\DLL_Project_Tutorial1.pdb
