@@ -68,3 +68,6 @@ C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\obj\
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\obj\Debug\Client.exe
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\obj\Debug\Client.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\bin\Debug\Business_Tier.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\bin\Debug\Business_Tier.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Client\bin\Debug\Business_Tier.exe.config

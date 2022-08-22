@@ -20,7 +20,7 @@ namespace Tutorial1_Server
 
             host = new ServiceHost(typeof(Data_Server));
 
-            host.AddServiceEndpoint(typeof(Data_Server_Interface), tcp, "net.tcp://0.0.0.0:8100/DataService");
+            host.AddServiceEndpoint(typeof(Data_Server_Interface), tcp, "net.tcp://localhost:8100/DataService");
 
             host.Open();
 

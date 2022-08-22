@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLL_Interface", "DLL_Interface\DLL_Interface.csproj", "{FE611CAA-D9C6-4B61-9A61-3D74DC69E83E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_Tier", "Business_Tier\Business_Tier.csproj", "{549B253C-C1DD-438E-B7AF-67BD2D0EB813}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FE611CAA-D9C6-4B61-9A61-3D74DC69E83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE611CAA-D9C6-4B61-9A61-3D74DC69E83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE611CAA-D9C6-4B61-9A61-3D74DC69E83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549B253C-C1DD-438E-B7AF-67BD2D0EB813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549B253C-C1DD-438E-B7AF-67BD2D0EB813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549B253C-C1DD-438E-B7AF-67BD2D0EB813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549B253C-C1DD-438E-B7AF-67BD2D0EB813}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

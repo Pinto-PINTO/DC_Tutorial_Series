@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business_Tier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -19,29 +20,32 @@ namespace Client
 {
     public partial class MainWindow : Window
     {
-        private Data_Server_Interface foob;
+        private BusinessServerInterface foob;
 
         public MainWindow()
         {
             InitializeComponent();
 
 
-            ChannelFactory<Data_Server_Interface> foobFactory;
+            ChannelFactory<BusinessServerInterface> foobFactory;
             NetTcpBinding tcp = new NetTcpBinding();
 
-            string URL = "net.tcp://localhost:8100/DataService";
-            try
-            {
-                foobFactory = new ChannelFactory<Data_Server_Interface>(tcp, URL);
-                foob = foobFactory.CreateChannel();
+            string URL = "net.tcp://localhost:8200/BusinessService";
 
-                TotalNum.Text = foob.GetNumEntries().ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Unable to make a connection to the server");
-                return;
-            }
+                try
+                {
+                    foobFactory = new ChannelFactory<BusinessServerInterface>(tcp, URL);
+                    foob = foobFactory.CreateChannel();
+
+                    TotalNum.Text = foob.GetNumEntries().ToString();
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to make a connection to the main server");
+                    return;
+                }
+            
+                
         }
 
         private void goBtn_Click(object sender, RoutedEventArgs e)

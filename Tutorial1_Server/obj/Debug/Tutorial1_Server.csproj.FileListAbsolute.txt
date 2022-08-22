@@ -30,3 +30,20 @@ C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\Tutorial1_Ser
 C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.csproj.CopyComplete
 C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.exe
 C:\Users\R E V O\Desktop\Tutorial 1 - Latest\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\Tutorial1_Server.exe.config
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\Tutorial1_Server.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\Tutorial1_Server.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\DLL_Interface.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\DLL_Project_Tutorial1.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\System.ServiceModel.Http.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\System.ServiceModel.Primitives.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\DLL_Project_Tutorial1.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\DLL_Interface.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\System.ServiceModel.Http.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\bin\Debug\System.ServiceModel.Primitives.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.csproj.AssemblyReference.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.csproj.CoreCompileInputs.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.csproj.CopyComplete
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Tutorial1_Server\obj\Debug\Tutorial1_Server.pdb

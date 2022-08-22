@@ -96,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business_Tier\Business_Tier.csproj">
+      <Project>{549B253C-C1DD-438E-B7AF-67BD2D0EB813}</Project>
+      <Name>Business_Tier</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DLL_Interface\DLL_Interface.csproj">
       <Project>{fe611caa-d9c6-4b61-9a61-3d74dc69e83e}</Project>
       <Name>DLL_Interface</Name>
