@@ -17,5 +17,8 @@ namespace Business_Tier
         [OperationContract]
         [FaultContract(typeof(Exception))]
         void GetValuesForEntry(int index, out uint acctNo, out uint pin, out int bal, out string fName, out string lName, out string img);
+
+        [OperationContract]
+        void GetValuesForSearch(string searchText, out uint acctNo, out uint pin, out int bal, out string fName, out string lName, out string img);
     }
 }

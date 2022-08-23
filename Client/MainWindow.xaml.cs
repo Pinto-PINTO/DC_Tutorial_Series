@@ -105,7 +105,26 @@ namespace Client
 
         }
 
-   
+        private void SearchBtnClick(object sender, RoutedEventArgs e)
+        {
+            int index = 0;
+            string fName = "", lName = "", img = "";
+            int bal = 0;
+            uint acct = 0, pin = 0;
+
+            foob.GetValuesForSearch(SearchBox.Text, out acct, out pin, out bal, out fName, out lName, out img);
+
+            FirstName.Text = fName;
+            LastName.Text = lName;
+            Balance.Text = bal.ToString("C");
+            AcctNo.Text = acct.ToString();
+            Pin.Text = pin.ToString("D4");
+
+            Uri link = new Uri(img, UriKind.Absolute);
+            Console.WriteLine(link.ToString());
+            ProfileImg.Source = new BitmapImage(link);
+
+        }
     }
 
 }

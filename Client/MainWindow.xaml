@@ -113,7 +113,7 @@
                                         AlignmentX="Left"/>
                         </TextBox.Background>
                     </TextBox>
-                    
+
                     <TextBlock Text="Last Name"
                                Foreground="DarkGray"
                                FontSize="12"
@@ -244,7 +244,7 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    
+
                     <TextBlock Text="The Total Number of Records ..."
                                Foreground="DarkGray"
                                FontSize="12"
@@ -252,7 +252,7 @@
                                HorizontalAlignment="Center"
                                FontFamily="Montserrat"                             
                                Margin="0,20,0,0"/>
-                    
+
                     <TextBlock Text="Account Number"
                                x:Name="TotalNum"
                                Foreground="DarkGray"
@@ -262,6 +262,8 @@
                                FontFamily="Montserrat"                             
                                Margin="0,5,0,0"/>
                 </StackPanel>
+                <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="21" Margin="288,191,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="148"/>
+                <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="21" Margin="449,191,0,0" Grid.Row="1" VerticalAlignment="Top" Width="59" Click="SearchBtnClick"/>
             </Grid>
         </Border>
 
