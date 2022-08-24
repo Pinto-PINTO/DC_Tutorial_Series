@@ -14,3 +14,9 @@ C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Clien
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\obj\Debug\Async_Client.csproj.CoreCompileInputs.cache
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\obj\Debug\Async_Client.exe
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\obj\Debug\Async_Client.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\bin\Debug\Business_Tier.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\bin\Debug\DLL_Interface.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\bin\Debug\Business_Tier.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\bin\Debug\Business_Tier.exe.config
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\bin\Debug\DLL_Interface.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Async_Client\obj\Debug\Async_Client.csproj.CopyComplete

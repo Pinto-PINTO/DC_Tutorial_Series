@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Async_Client"
         mc:Ignorable="d"
-        Title="AsyncMainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="800" Width="800">
     
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
@@ -224,7 +224,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
                             Margin="0,30,0,0"
-                            >
+                            Click="goBtn_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
                                 <Setter Property="Background" Value="#462AD8"/>
@@ -265,7 +265,7 @@
                                Margin="0,5,0,0"/>
                 </StackPanel>
                 <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="20" Margin="288,207,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="148"/>
-                <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="22" Margin="449,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="59"/>
+                <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="22" Margin="449,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="59" Click="SearchBtnClick"/>
             </Grid>
         </Border>
     </Border>

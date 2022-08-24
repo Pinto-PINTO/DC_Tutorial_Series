@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Business_Tier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,14 +17,210 @@ using System.Windows.Shapes;
 
 namespace Async_Client
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
+
+    public delegate string Search(string value);
+
     public partial class MainWindow : Window
     {
+        private BusinessServerInterface foob;
+        private string searchInput;
+
         public MainWindow()
         {
             InitializeComponent();
+
+
+            ChannelFactory<BusinessServerInterface> foobFactory;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost:8200/BusinessService";
+
+            try
+            {
+                foobFactory = new ChannelFactory<BusinessServerInterface>(tcp, URL);
+                foob = foobFactory.CreateChannel();
+
+                TotalNum.Text = foob.GetNumEntries().ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Unable to make a connection to the async server");
+                return;
+            }
+
+
         }
+
+        private void goBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int index = 0;
+            string fName = "", lName = "", img = "";
+            int bal = 0;
+            uint acct = 0, pin = 0;
+
+            try
+            {
+                index = Int32.Parse(IndexNum.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Enter a number!");
+                return;
+            }
+
+
+
+            try
+            {
+                if (index > foob.GetNumEntries() || index <= 0)
+
+                {
+                    Console.WriteLine(foob.GetNumEntries());
+                    MessageBox.Show("Please enter a valid index from 1 to 151");
+                    return;
+                }
+                else
+                {
+                    foob.GetValuesForEntry(index, out acct, out pin, out bal, out fName, out lName, out img);
+                }
+
+
+                FirstName.Text = fName;
+                LastName.Text = lName;
+                Balance.Text = bal.ToString("C");
+                AcctNo.Text = acct.ToString();
+                Pin.Text = pin.ToString("D4");
+            }
+            catch
+            {
+                MessageBox.Show("Unable to make a connection to the server");
+                return;
+            }
+
+
+            // Profile Picture
+
+            Uri link = new Uri(img, UriKind.Absolute);
+            Console.WriteLine(link.ToString());
+            ProfileImg.Source = new BitmapImage(link);
+
+
+
+        }
+
+        private async void SearchBtnClick(object sender, RoutedEventArgs e)
+        {
+
+            searchInput = SearchBox.Text;
+
+            // Exception handing for Search Box and code clean up
+            if (!InvalidCharacters(searchInput) && !searchInput.All(char.IsDigit))
+            {
+
+                // Async 
+                ProgressBarValue(10);
+                CloseUI();
+
+                Task<string> task = new Task<string>(Managing_Search);
+
+                ProgressBarValue(20);
+                task.Start();
+                ProgressBarValue(30);
+
+                var result = await task;
+                ProgressBarValue(100);
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid Last Name");
+            }
+
+
+            /*searchReferance = Managing_Search;
+            AsyncCallback callback;
+            callback = this.OnSearchCompletion;
+            var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);*/
+
+        }
+
+        public string Managing_Search()
+        {
+
+            string fName = null;
+            string lName = null;
+            string img = null;
+            int bal = 0;
+            uint acct = 0;
+            uint pin = 0;
+
+            foob.GetValuesForSearch(searchInput, out acct, out pin, out bal, out fName, out lName, out img);
+
+            // ProgressBarValue(50);
+
+            try
+            {
+
+                FirstName.Dispatcher.Invoke(new Action(() => FirstName.Text = fName));
+                LastName.Dispatcher.Invoke(new Action(() => LastName.Text = lName));
+                Balance.Dispatcher.Invoke(new Action(() => Balance.Text = bal.ToString("C")));
+                AcctNo.Dispatcher.Invoke(new Action(() => AcctNo.Text = acct.ToString()));
+                Pin.Dispatcher.Invoke(new Action(() => Pin.Text = pin.ToString("D4")));
+
+                ProgressBarValue(60);
+
+                IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.Text = ""));
+
+                Uri link = new Uri(img, UriKind.Absolute);
+                Console.WriteLine(link.ToString());
+
+                ProgressBarValue(90);
+
+                ProfileImg.Dispatcher.Invoke(new Action(() => ProfileImg.Source = new BitmapImage(link)));
+
+
+                StartUI();
+                return "Request Completed";
+
+            }
+            catch
+            {
+                Console.WriteLine("The Search has failed");
+                return "Error";
+
+            }
+
+        }
+
+
+        // Search Btn and Progress Bar
+        private bool InvalidCharacters(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
+
+        private void ProgressBarValue(int value)
+        {
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));
+        }
+
+
+        private void CloseUI()
+        {
+            SearchBox.Dispatcher.Invoke(new Action(() => SearchBox.IsReadOnly = true));
+            IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.IsReadOnly = true));
+            goBtn.Dispatcher.Invoke(new Action(() => goBtn.IsEnabled = false));
+            SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = false));
+        }
+
+        private void StartUI()
+        {
+            SearchBox.Dispatcher.Invoke(new Action(() => SearchBox.IsReadOnly = false));
+            IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.IsReadOnly = false));
+            goBtn.Dispatcher.Invoke(new Action(() => goBtn.IsEnabled = true));
+            SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = true));
+        }
+
     }
 }
