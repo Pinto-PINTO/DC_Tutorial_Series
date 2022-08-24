@@ -129,10 +129,37 @@ namespace Client
             Console.WriteLine(link.ToString());
             ProfileImg.Source = new BitmapImage(link); */
 
-            searchReferance = Managing_Search;
+
+            // Exception handing for Search Box and code clean up
+            if (!InvalidCharacters(SearchBox.Text) && !SearchBox.Text.All(char.IsDigit))
+            {
+
+                // Handing the progress bar
+                CloseUI();
+                ProgressBarValue(10);
+
+
+
+                searchReferance = Managing_Search;
+                AsyncCallback callback;
+                callback = this.OnSearchCompletion;
+
+
+                ProgressBarValue(10);
+
+                var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid Last Name");
+            }
+
+
+            /*searchReferance = Managing_Search;
             AsyncCallback callback;
             callback = this.OnSearchCompletion;
-            var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);
+            var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);*/
 
         }
 
@@ -148,6 +175,7 @@ namespace Client
 
             foob.GetValuesForSearch(value, out acct, out pin, out bal, out fName, out lName, out img);
 
+            ProgressBarValue(50);
 
             try
             {
@@ -157,13 +185,19 @@ namespace Client
                 Balance.Dispatcher.Invoke(new Action(() => Balance.Text = bal.ToString("C")));
                 AcctNo.Dispatcher.Invoke(new Action(() => AcctNo.Text = acct.ToString()));
                 Pin.Dispatcher.Invoke(new Action(() => Pin.Text = pin.ToString("D4")));
+
+                ProgressBarValue(60);
+
                 IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.Text = ""));
 
                 Uri link = new Uri(img, UriKind.Absolute);
                 Console.WriteLine(link.ToString());
                 ProfileImg.Dispatcher.Invoke(new Action(() => ProfileImg.Source = new BitmapImage(link)));
 
-                return "Request Compleated";
+                ProgressBarValue(100);
+                StartUI();
+
+                return "Request Completed";
 
             }
             catch
@@ -190,6 +224,34 @@ namespace Client
 
             asyncobj.AsyncWaitHandle.Close();
 
+        }
+
+        // Search Btn and Progress Bar
+        private bool InvalidCharacters(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
+
+        private void ProgressBarValue(int value)
+        {
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));
+        }
+
+
+        private void CloseUI()
+        {
+            SearchBox.Dispatcher.Invoke(new Action(() => SearchBox.IsReadOnly = true));
+            IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.IsReadOnly = true));
+            goBtn.Dispatcher.Invoke(new Action(() => goBtn.IsEnabled = false));
+            SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = false));
+        }
+
+        private void StartUI()
+        {
+            SearchBox.Dispatcher.Invoke(new Action(() => SearchBox.IsReadOnly = false));
+            IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.IsReadOnly = false));
+            goBtn.Dispatcher.Invoke(new Action(() => goBtn.IsEnabled = true));
+            SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = true));
         }
 
     }
