@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,14 @@ using System.Windows.Shapes;
 using Tutorial1_Server;
 
 namespace Client
-{
+{   
+    // Creating delegate
+    public delegate string Search(string value);
+
     public partial class MainWindow : Window
     {
         private BusinessServerInterface foob;
+        private Search searchReferance;
 
         public MainWindow()
         {
@@ -107,7 +112,7 @@ namespace Client
 
         private void SearchBtnClick(object sender, RoutedEventArgs e)
         {
-            int index = 0;
+            /* int index = 0;
             string fName = "", lName = "", img = "";
             int bal = 0;
             uint acct = 0, pin = 0;
@@ -122,9 +127,71 @@ namespace Client
 
             Uri link = new Uri(img, UriKind.Absolute);
             Console.WriteLine(link.ToString());
-            ProfileImg.Source = new BitmapImage(link);
+            ProfileImg.Source = new BitmapImage(link); */
+
+            searchReferance = Managing_Search;
+            AsyncCallback callback;
+            callback = this.OnSearchCompletion;
+            var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);
 
         }
+
+        public string Managing_Search(string value)
+        {
+
+            string fName = null;
+            string lName = null;
+            string img = null;
+            int bal = 0;            
+            uint acct = 0;
+            uint pin = 0;
+
+            foob.GetValuesForSearch(value, out acct, out pin, out bal, out fName, out lName, out img);
+
+
+            try
+            {
+
+                FirstName.Dispatcher.Invoke(new Action(() => FirstName.Text = fName));
+                LastName.Dispatcher.Invoke(new Action(() => LastName.Text = lName));
+                Balance.Dispatcher.Invoke(new Action(() => Balance.Text = bal.ToString("C")));
+                AcctNo.Dispatcher.Invoke(new Action(() => AcctNo.Text = acct.ToString()));
+                Pin.Dispatcher.Invoke(new Action(() => Pin.Text = pin.ToString("D4")));
+                IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.Text = ""));
+
+                Uri link = new Uri(img, UriKind.Absolute);
+                Console.WriteLine(link.ToString());
+                ProfileImg.Dispatcher.Invoke(new Action(() => ProfileImg.Source = new BitmapImage(link)));
+
+                return "Request Compleated";
+
+            }
+            catch
+            {
+                Console.WriteLine("The Search has failed");
+                return "Error";
+
+            }
+
+        }
+
+
+        private void OnSearchCompletion(IAsyncResult asyncResult)
+        {
+
+            Search searchdel;
+            AsyncResult asyncobj = (AsyncResult) asyncResult;
+
+            if (asyncobj.EndInvokeCalled == false)
+            {
+                searchdel = (Search)asyncobj.AsyncDelegate;
+                var result = searchdel.EndInvoke(asyncResult);
+            }
+
+            asyncobj.AsyncWaitHandle.Close();
+
+        }
+
     }
 
 }
