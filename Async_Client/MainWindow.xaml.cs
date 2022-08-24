@@ -24,7 +24,7 @@ namespace Async_Client
     public partial class MainWindow : Window
     {
         private BusinessServerInterface foob;
-        private string searchInput;
+        private string searchText;
 
         public MainWindow()
         {
@@ -112,10 +112,10 @@ namespace Async_Client
         private async void SearchBtnClick(object sender, RoutedEventArgs e)
         {
 
-            searchInput = SearchBox.Text;
+            searchText = SearchBox.Text;
 
             // Exception handing for Search Box and code clean up
-            if (!InvalidCharacters(searchInput) && !searchInput.All(char.IsDigit))
+            if (!InvalidCharacters(searchText) && !searchText.All(char.IsDigit))
             {
 
                 // Async 
@@ -155,7 +155,7 @@ namespace Async_Client
             uint acct = 0;
             uint pin = 0;
 
-            foob.GetValuesForSearch(searchInput, out acct, out pin, out bal, out fName, out lName, out img);
+            foob.GetValuesForSearch(searchText, out acct, out pin, out bal, out fName, out lName, out img);
 
             // ProgressBarValue(50);
 
@@ -204,7 +204,6 @@ namespace Async_Client
         {
             ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));
         }
-
 
         private void CloseUI()
         {

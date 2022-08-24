@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,8 @@ namespace Business_Tier
     {
 
         public Data_Server_Interface foob;
+
+        uint AccessLogValue;
 
         public BusinessServerImplementation()
         {
@@ -28,12 +31,21 @@ namespace Business_Tier
 
         public int GetNumEntries()
         {
-            return foob.GetNumEntries();
+            try
+            {
+                return foob.GetNumEntries();
+            }
+            finally
+            {
+                AccessLog("Number of records in Database: " + foob.GetNumEntries());
+            }
+            
         }
 
         public void GetValuesForEntry(int index, out uint acctNo, out uint pin, out int bal, out string fName, out string lName, out string img)
         {
             foob.GetValuesForEntry(index, out acctNo, out pin, out bal, out fName, out lName, out img);
+            AccessLog("FINDING data of index: " + index);
         }
 
         public void GetValuesForSearch(string searchText, out uint acctNo, out uint pin, out int bal, out string fName, out string lName, out string img)
@@ -45,6 +57,8 @@ namespace Business_Tier
             bal = 0;
             img = null;
             int numEntry = foob.GetNumEntries();
+
+            AccessLog("Waiting for search results ....");
 
             for (int i = 1; i <= numEntry; i++)
             {
@@ -59,6 +73,8 @@ namespace Business_Tier
 
                 if (SlName.ToLower().Contains(searchText.ToLower()))
                 {
+                    AccessLog("SEARCHING for last name " + SlName + ", found on index " + i );
+
                     acctNo = SacctNo;
                     pin = Spin;
                     bal = Sbal;
@@ -72,6 +88,16 @@ namespace Business_Tier
             }
 
             Thread.Sleep(3000);
+        }
+
+        // Implementing the Log
+        [MethodImpl(MethodImplOptions.Synchronized)]
+        void AccessLog(string logString)
+        {
+            AccessLogValue++;
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Action: " + AccessLogValue);
+            Console.WriteLine(logString);
         }
     }
 }   
