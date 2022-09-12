@@ -9,3 +9,14 @@ C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Business_Ti
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Business_Tier\obj\Debug\Business_Tier.csproj.CopyComplete
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Business_Tier\obj\Debug\Business_Tier.exe
 C:\Users\R E V O\Desktop\20907592_Tutorial1_DC\DLL_Project_Tutorial1\Business_Tier\obj\Debug\Business_Tier.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\bin\Debug\Business_Tier.exe.config
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\bin\Debug\Business_Tier.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\bin\Debug\Business_Tier.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\bin\Debug\DLL_Interface.dll
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\bin\Debug\DLL_Interface.pdb
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.csproj.AssemblyReference.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.csproj.SuggestedBindingRedirects.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.csproj.CoreCompileInputs.cache
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.csproj.CopyComplete
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.exe
+C:\Users\R E V O\Desktop\20907592_Tutorial2_DC\DLL_Project_Tutorial2\Business_Tier\obj\Debug\Business_Tier.pdb

@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace Async_Client
 {
 
-
+    // Async and Await Client
     public delegate string Search(string value);
 
     public partial class MainWindow : Window
@@ -194,12 +194,13 @@ namespace Async_Client
         }
 
 
-        // Search Btn and Progress Bar
+        // Character Checking In Search bar
         private bool InvalidCharacters(string yourString)
         {
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
 
+        // Progress Bar
         private void ProgressBarValue(int value)
         {
             ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));

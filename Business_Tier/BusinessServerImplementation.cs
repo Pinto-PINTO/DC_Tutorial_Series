@@ -56,6 +56,7 @@ namespace Business_Tier
             pin = 0;
             bal = 0;
             img = null;
+            bool searchFound = false;
             int numEntry = foob.GetNumEntries();
 
             AccessLog("Waiting for search results ....");
@@ -81,13 +82,20 @@ namespace Business_Tier
                     fName = SfName;
                     lName = SlName;
                     img = Simg;
+                    searchFound = true;
                     break;
 
                 }
+                
 
             }
 
-            Thread.Sleep(3000);
+            if (searchFound == false)
+            {
+                Console.WriteLine("Search not found");
+            }
+
+            Thread.Sleep(5000);
         }
 
         // Implementing the Log

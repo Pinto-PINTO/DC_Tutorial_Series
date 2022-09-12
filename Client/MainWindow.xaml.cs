@@ -19,7 +19,7 @@ using Tutorial1_Server;
 
 namespace Client
 {   
-    // Creating delegate
+    // Creating delegate client
     public delegate string Search(string value);
 
     public partial class MainWindow : Window
@@ -226,12 +226,13 @@ namespace Client
 
         }
 
-        // Search Btn and Progress Bar
+        // Invalid Character Checking
         private bool InvalidCharacters(string yourString)
         {
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
 
+        // Progress Bar
         private void ProgressBarValue(int value)
         {
             ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));
