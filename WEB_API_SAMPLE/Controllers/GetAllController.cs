@@ -31,22 +31,22 @@ namespace WEB_API_SAMPLE.Controllers
             SetDataServerInstance();
 
             int index = 0;
-            string fName = "";
-            string lName = "";
+            string fname = "";
+            string lname = "";
             int bal = 0;
             uint acctNo = 0;
             uint pin = 0;
             string img = "";
 
 
-            foob.GetValuesForEntry(id, out acctNo, out pin, out bal, out fName, out lName, out img);
+            foob.GetValuesForEntry(id, out acctNo, out pin, out bal, out fname, out lname, out img);
 
 
             DataIntermed client = new DataIntermed();
 
             client.bal = bal;
-            client.fname = fName;
-            client.lname = lName;
+            client.fname = fname;
+            client.lname = lname;
             client.acctNo = acctNo;
             client.pin = pin;
             client.img = img;
@@ -67,7 +67,6 @@ namespace WEB_API_SAMPLE.Controllers
             NetTcpBinding tcp = new NetTcpBinding();
 
             string URL = "net.tcp://localhost:8100/DataService";
-
 
 
 

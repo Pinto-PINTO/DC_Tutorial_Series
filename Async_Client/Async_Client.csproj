@@ -131,6 +131,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\API_Classes\API_Classes.csproj">
+      <Project>{7B8CF99A-F5F3-4B99-B6BD-20AE32520F07}</Project>
+      <Name>API_Classes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Business_Tier\Business_Tier.csproj">
       <Project>{549B253C-C1DD-438E-B7AF-67BD2D0EB813}</Project>
       <Name>Business_Tier</Name>

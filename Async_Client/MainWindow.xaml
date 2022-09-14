@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Async_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
-    
+        Title="MainWindow" Height="900" Width="800">
+
     <Border CornerRadius="12">
         <Border CornerRadius="10"                    
             BorderThickness="2"
@@ -51,27 +51,19 @@
                     <ProgressBar x:Name="ProgressBar" Height="14" Width="126" Value="0" />
                     <Image x:Name="ProfileImg" Source="https://images.unsplash.com/photo-1511367461989-f85a21fda167"
                            Width="100" Height="100"/>
-                    <TextBlock Text="User Profile"
+                    <TextBlock Text="User Profiles"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
+                               Margin="0,100,0,20"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Enter your details and get started."
-                               Foreground="LightGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               Margin="0,5,0,0"/>
-
                     <TextBlock Text="Enter the Index Number"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0,35,0,0"/>
+                               FontFamily="Montserrat" Height="25"
+                               />
                     <TextBox x:Name="IndexNum"
                              FontSize="13"
                              FontWeight="Medium"
@@ -80,10 +72,10 @@
                              CaretBrush="LightGray"
                              BorderBrush="DarkGray"
                              BorderThickness="0,0,0,2"
-                             Height="28"
+                             Height="33"
                              VerticalContentAlignment="Center"
-                             Margin="0,5,0,0"
-                             Padding="20,0,0,0" >
+                             Margin="0,15,0,0"
+                             Padding="0,0,0,0" >
                         <TextBox.Background>
                             <ImageBrush 
                                         Stretch="None"
@@ -223,7 +215,7 @@
                             FontSize="12"
                             FontFamily="Montserrat"
                             Cursor="Hand"                           
-                            Margin="0,30,0,0"
+                            Margin="0,20,0,0"
                             Click="goBtn_Click">
                         <Button.Style>
                             <Style TargetType="{x:Type Button}">
@@ -262,12 +254,20 @@
                                FontWeight="Medium"
                                HorizontalAlignment="Center"
                                FontFamily="Montserrat"                             
-                               Margin="0,5,0,0"/>
+                               Margin="0,15,0,0"/>
                 </StackPanel>
-                <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="20" Margin="288,207,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="148"/>
-                <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="22" Margin="449,206,0,0" Grid.Row="1" VerticalAlignment="Top" Width="59" Click="SearchBtnClick"/>
+
+                <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="20" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="148" Margin="288,146,0,0"/>
+                <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="22" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="SearchBtnClick" Margin="474,144,0,0"/>
+
+                <TextBox x:Name="URLInput" HorizontalAlignment="Left" Height="20" Grid.Row="1" TextWrapping="Wrap" Text="Insert Base URL" VerticalAlignment="Top" Width="148" Margin="288,179,0,0"/>
+                <Button Name="ConfirmURL" Content="ConfirmURL" HorizontalAlignment="Left" Height="22" Grid.Row="1" VerticalAlignment="Top" Width="89" Click="ConfirmURL_Click" Margin="474,173,0,0"/>
+
+                <TextBlock x:Name="CurrentBaseURL" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="DarkGray" Text="Target URL Empty" VerticalAlignment="Top" Width="148" Grid.Row="1" Margin="288,212,0,0"/>
+
+
             </Grid>
         </Border>
     </Border>
-    
+
 </Window>

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using RestSharp;
+using API_Classes;
 
 namespace Async_Client
 {
@@ -25,43 +26,53 @@ namespace Async_Client
 
     public partial class MainWindow : Window
     {
+
         private BusinessServerInterface foob;
         private string searchText;
+        private string BaseURL;
+
 
         public MainWindow()
         {
             InitializeComponent();
+            RestClient restClient = new RestClient("http://localhost:59284/");
+            RestRequest restRequest = new RestRequest("api/Getall/", Method.Get);
 
-
-            ChannelFactory<BusinessServerInterface> foobFactory;
-            NetTcpBinding tcp = new NetTcpBinding();
-
-            string URL = "net.tcp://localhost:8200/BusinessService";
-
-            try
-            {
-                foobFactory = new ChannelFactory<BusinessServerInterface>(tcp, URL);
-                foob = foobFactory.CreateChannel();
-
-                TotalNum.Text = foob.GetNumEntries().ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Unable to make a connection to the async server");
-                return;
-            }
-
+            RestResponse restResponse = restClient.Execute(restRequest);
+            TotalNum.Text = restResponse.Content;
 
         }
 
+
+
+        // Additional
+        public static string Test(int compare)
+        {
+            if (compare == 0)
+                return "equal to";
+            else if (compare < 0)
+                return "less than";
+            else
+                return "greater than";
+        }
+
+
         private void goBtn_Click(object sender, RoutedEventArgs e)
         {
-            int index = 0;
-            string fName = "", lName = "", img = "";
-            int bal = 0;
-            uint acct = 0, pin = 0;
+            //int index = 0;
 
-            try
+            RestClient restClient;
+            RestRequest restRequest;
+            RestResponse restResponse = null;
+            DataIntermed client;
+
+            /*string fName = "", lName = "", img = "";
+            int bal = 0;
+            uint acct = 0, pin = 0;*/
+
+            int index = Int32.Parse(IndexNum.Text);
+
+            /*try
             {
                 index = Int32.Parse(IndexNum.Text);
             }
@@ -69,45 +80,55 @@ namespace Async_Client
             {
                 MessageBox.Show("Enter a number!");
                 return;
-            }
+            }*/
 
 
 
-            try
+            // -------------------------------------
+            // Try catch
+            //--------------------------------------
+
+            if ((Test(index) != "less than") && index < 100001)
             {
-                if (index > foob.GetNumEntries() || index <= 0)
-
+                try
                 {
-                    Console.WriteLine(foob.GetNumEntries());
-                    MessageBox.Show("Please enter a valid index from 1 to 151");
-                    return;
+                    restClient = new RestClient(BaseURL);
+                    restRequest = new RestRequest("api/Getall/{id}", Method.Get);
+                    restRequest.AddUrlSegment("id", index);
+                    restResponse = restClient.Execute(restRequest);
+
+                    client = JsonConvert.DeserializeObject<DataIntermed>(restResponse.Content);
+
                 }
-                else
+                catch (Exception)
                 {
-                    foob.GetValuesForEntry(index, out acct, out pin, out bal, out fName, out lName, out img);
+
+                    Console.WriteLine("Error", e);
                 }
 
-
-                FirstName.Text = fName;
-                LastName.Text = lName;
-                Balance.Text = bal.ToString("C");
-                AcctNo.Text = acct.ToString();
-                Pin.Text = pin.ToString("D4");
             }
-            catch
+            else
             {
-                MessageBox.Show("Unable to make a connection to the server");
-                return;
+                Console.WriteLine("Error Please Enter a Number in the Valid Range of 1-100001");
             }
+
+
+
+
+            client = JsonConvert.DeserializeObject<DataIntermed>(restResponse.Content);
 
 
             // Profile Picture
-
-            Uri link = new Uri(img, UriKind.Absolute);
+            Uri link = new Uri(client.img, UriKind.Absolute);
             Console.WriteLine(link.ToString());
             ProfileImg.Source = new BitmapImage(link);
 
-
+            // Fields
+            FirstName.Text = client.fname.ToString();
+            LastName.Text = client.lname;
+            Balance.Text = client.bal.ToString("C");
+            AcctNo.Text = client.acctNo.ToString();
+            Pin.Text = client.pin.ToString("D4");
 
         }
 
@@ -140,41 +161,54 @@ namespace Async_Client
             }
 
 
-            /*searchReferance = Managing_Search;
-            AsyncCallback callback;
-            callback = this.OnSearchCompletion;
-            var result = searchReferance.BeginInvoke(SearchBox.Text, callback, null);*/
-
         }
+
+
 
         public string Managing_Search()
         {
 
-            string fName = null;
-            string lName = null;
-            string img = null;
-            int bal = 0;
-            uint acct = 0;
-            uint pin = 0;
+            RestClient restClient;
+            RestRequest restRequest;
+            RestResponse restResponse;
+            DataIntermed client;
 
-            foob.GetValuesForSearch(searchText, out acct, out pin, out bal, out fName, out lName, out img);
 
-            // ProgressBarValue(50);
 
-            try
+            SearchData clientSearch = new SearchData();
+
+            clientSearch.searchStr = searchText;
+
+            Console.WriteLine(clientSearch);
+            restClient = new RestClient("http://localhost:59284/");
+            restRequest = new RestRequest("api/search/", Method.Post);
+
+
+
+            restRequest.AddJsonBody(clientSearch);
+
+            restResponse = restClient.Execute(restRequest);
+
+            client = JsonConvert.DeserializeObject<DataIntermed>(restResponse.Content);
+
+
+
+
+
+            if (client.fname.ToString() != null)
             {
 
-                FirstName.Dispatcher.Invoke(new Action(() => FirstName.Text = fName));
-                LastName.Dispatcher.Invoke(new Action(() => LastName.Text = lName));
-                Balance.Dispatcher.Invoke(new Action(() => Balance.Text = bal.ToString("C")));
-                AcctNo.Dispatcher.Invoke(new Action(() => AcctNo.Text = acct.ToString()));
-                Pin.Dispatcher.Invoke(new Action(() => Pin.Text = pin.ToString("D4")));
+                FirstName.Dispatcher.Invoke(new Action(() => FirstName.Text = client.fname.ToString()));
+                LastName.Dispatcher.Invoke(new Action(() => LastName.Text = client.lname.ToString()));
+                Balance.Dispatcher.Invoke(new Action(() => Balance.Text = client.bal.ToString("C")));
+                AcctNo.Dispatcher.Invoke(new Action(() => AcctNo.Text = client.acctNo.ToString()));
+                Pin.Dispatcher.Invoke(new Action(() => Pin.Text = client.pin.ToString("D4")));
 
                 ProgressBarValue(60);
 
                 IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.Text = ""));
 
-                Uri link = new Uri(img, UriKind.Absolute);
+                Uri link = new Uri(client.img);
                 Console.WriteLine(link.ToString());
 
                 ProgressBarValue(90);
@@ -186,10 +220,10 @@ namespace Async_Client
                 return "Request Completed";
 
             }
-            catch
+            else
             {
-                Console.WriteLine("The Search has failed");
-                return "Error";
+                ProgressBarValue(0);
+                return "Search Not Found";
 
             }
 
@@ -222,6 +256,12 @@ namespace Async_Client
             IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.IsReadOnly = false));
             goBtn.Dispatcher.Invoke(new Action(() => goBtn.IsEnabled = true));
             SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = true));
+        }
+
+        private void ConfirmURL_Click(object sender, RoutedEventArgs e)
+        {
+            BaseURL = URLInput.Text;
+            CurrentBaseURL.Text = BaseURL;
         }
 
     }
