@@ -16,20 +16,21 @@ namespace WEB_API_SAMPLE.Controllers
         public Data_Server_Interface foob;
 
 
-        // GET request
+        // GET REQUEST
         public string Get()
         {
-            SetDataServerInstance();
+            Data_Server_Initilization();
             return foob.GetNumEntries().ToString();
         }
 
 
-
+        // DATA INTERMEDIATE CLASS TO GET VALUES
         public DataIntermed Get(int id)
         {
 
-            SetDataServerInstance();
+            Data_Server_Initilization();
 
+            // INITILIZATION
             int index = 0;
             string fname = "";
             string lname = "";
@@ -42,6 +43,7 @@ namespace WEB_API_SAMPLE.Controllers
             foob.GetValuesForEntry(id, out acctNo, out pin, out bal, out fname, out lname, out img);
 
 
+            // FEEDING TO CLIENT
             DataIntermed client = new DataIntermed();
 
             client.bal = bal;
@@ -52,29 +54,22 @@ namespace WEB_API_SAMPLE.Controllers
             client.img = img;
 
 
-
-
             return client;
         }
 
 
-        private void SetDataServerInstance()
+        private void Data_Server_Initilization()
         {
+            
+            // INITILIZING THE CONNECTION
             ChannelFactory<Data_Server_Interface> foobFactory;
-
-
-
             NetTcpBinding tcp = new NetTcpBinding();
-
             string URL = "net.tcp://localhost:8100/DataService";
 
 
-
-            //Establishing connection and getting the client count
-
             foobFactory = new ChannelFactory<Data_Server_Interface>(tcp, URL);
-
             foob = foobFactory.CreateChannel();
         }
+
     }
 }

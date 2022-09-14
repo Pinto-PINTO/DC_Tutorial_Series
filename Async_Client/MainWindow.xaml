@@ -260,10 +260,10 @@
                 <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="20" Grid.Row="1" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Width="148" Margin="288,146,0,0"/>
                 <Button Name="SearchBtn" Content="Search" HorizontalAlignment="Left" Height="22" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="SearchBtnClick" Margin="474,144,0,0"/>
 
-                <TextBox x:Name="URLInput" HorizontalAlignment="Left" Height="20" Grid.Row="1" TextWrapping="Wrap" Text="Insert Base URL" VerticalAlignment="Top" Width="148" Margin="288,179,0,0"/>
-                <Button Name="ConfirmURL" Content="ConfirmURL" HorizontalAlignment="Left" Height="22" Grid.Row="1" VerticalAlignment="Top" Width="89" Click="ConfirmURL_Click" Margin="474,173,0,0"/>
+                <TextBox x:Name="url_box" HorizontalAlignment="Left" Height="20" Grid.Row="1" TextWrapping="Wrap" Text="Insert Base URL" VerticalAlignment="Top" Width="148" Margin="288,179,0,0"/>
+                <Button Name="ConfirmURL" Content="ConfirmURL" HorizontalAlignment="Left" Height="22" Grid.Row="1" VerticalAlignment="Top" Width="89" Click="url_box_click" Margin="474,173,0,0"/>
 
-                <TextBlock x:Name="CurrentBaseURL" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="DarkGray" Text="Target URL Empty" VerticalAlignment="Top" Width="148" Grid.Row="1" Margin="288,212,0,0"/>
+                <TextBlock x:Name="url_display" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="DarkGray" Text="Target URL Empty" VerticalAlignment="Top" Width="148" Grid.Row="1" Margin="288,212,0,0"/>
 
 
             </Grid>

@@ -16,8 +16,9 @@ namespace WEB_API_SAMPLE.Controllers
 
         public DataIntermed Post([FromBody] SearchData searchText)
         {
-            SetDataServerInstance();
+            Data_Server_Initilization();
 
+            // VARIABLE INITILIZATION
             int index = 0;
             string fName = "";
             string lName = "";
@@ -26,18 +27,13 @@ namespace WEB_API_SAMPLE.Controllers
             uint pin = 0;
             string img = "";
 
-            int numEntry = foob.GetNumEntries();
+            int entries = foob.GetNumEntries();
             int checkvar = 0;
 
 
-
-            Console.WriteLine(searchText.searchStr);
-
-
-
-
-            for (int i = 1; i <= numEntry; i++)
+            for (int i = 1; i <= entries; i++)
             {
+                
                 string firstName;
                 string lastName;
                 uint accountNo;
@@ -45,8 +41,6 @@ namespace WEB_API_SAMPLE.Controllers
                 int balance;
                 string imgSource;
                 SearchData searchable = searchText;
-
-
 
                 foob.GetValuesForEntry(i, out accountNo, out pinNo, out balance, out firstName, out lastName, out imgSource);
 
@@ -62,29 +56,14 @@ namespace WEB_API_SAMPLE.Controllers
                     lName = lastName;
                     img = imgSource;
 
-
                     break;
                 }
 
-                else if (i >= 200)
-                {
-
-                    Console.WriteLine("Match Not Found ");
-                    break;
-
-
-                }
 
             }
 
-            if (checkvar == 0)
-            {
-                Console.WriteLine("No match Found For Search:" + searchText);
-            }
 
-
-
-
+            // FEEDING DATA
             DataIntermed client = new DataIntermed();
 
             client.bal = bal;
@@ -99,27 +78,13 @@ namespace WEB_API_SAMPLE.Controllers
         }
 
 
-
-
-
-
-
-        private void SetDataServerInstance()
+        private void Data_Server_Initilization()
         {
             ChannelFactory<Data_Server_Interface> foobFactory;
-
-
-
             NetTcpBinding tcp = new NetTcpBinding();
-
             string URL = "net.tcp://localhost:8100/DataService";
 
-
-
-            //Establishing connection and getting the client count
-
             foobFactory = new ChannelFactory<Data_Server_Interface>(tcp, URL);
-
             foob = foobFactory.CreateChannel();
         }
     }

@@ -20,16 +20,13 @@ using API_Classes;
 
 namespace Async_Client
 {
-
-    // Async and Await Client
+      
     public delegate string Search(string value);
 
     public partial class MainWindow : Window
     {
-
-        private BusinessServerInterface foob;
         private string searchText;
-        private string BaseURL;
+        private string base_url;
 
 
         public MainWindow()
@@ -42,37 +39,33 @@ namespace Async_Client
             TotalNum.Text = restResponse.Content;
 
         }
+ 
 
-
-
-        // Additional
-        public static string Test(int compare)
+        // VALUE COMPARISONS
+        public static string ValueChecking(int val)
         {
-            if (compare == 0)
-                return "equal to";
-            else if (compare < 0)
-                return "less than";
+            if (val == 0)
+                return "EQUAL";
+            else if (val < 0)
+                return "LESS";
             else
-                return "greater than";
+                return "LARGER";
         }
+
+
 
 
         private void goBtn_Click(object sender, RoutedEventArgs e)
         {
-            //int index = 0;
+            int index = 0;
 
             RestClient restClient;
             RestRequest restRequest;
             RestResponse restResponse = null;
             DataIntermed client;
 
-            /*string fName = "", lName = "", img = "";
-            int bal = 0;
-            uint acct = 0, pin = 0;*/
 
-            int index = Int32.Parse(IndexNum.Text);
-
-            /*try
+            try
             {
                 index = Int32.Parse(IndexNum.Text);
             }
@@ -80,19 +73,17 @@ namespace Async_Client
             {
                 MessageBox.Show("Enter a number!");
                 return;
-            }*/
+            }
 
 
 
-            // -------------------------------------
-            // Try catch
-            //--------------------------------------
+            if ((ValueChecking(index) != "less than") && index < 100001)
 
-            if ((Test(index) != "less than") && index < 100001)
             {
+                // EXCEPTION HANDLING
                 try
                 {
-                    restClient = new RestClient(BaseURL);
+                    restClient = new RestClient(base_url);
                     restRequest = new RestRequest("api/Getall/{id}", Method.Get);
                     restRequest.AddUrlSegment("id", index);
                     restResponse = restClient.Execute(restRequest);
@@ -103,27 +94,26 @@ namespace Async_Client
                 catch (Exception)
                 {
 
-                    Console.WriteLine("Error", e);
+                    Console.WriteLine("ERROR OCCURED", e);
                 }
 
             }
             else
             {
-                Console.WriteLine("Error Please Enter a Number in the Valid Range of 1-100001");
+                Console.WriteLine("NUMBER NOT WITHIN THE RANGE!");
             }
-
-
 
 
             client = JsonConvert.DeserializeObject<DataIntermed>(restResponse.Content);
 
 
-            // Profile Picture
+            // PROFILE PICTURE
             Uri link = new Uri(client.img, UriKind.Absolute);
             Console.WriteLine(link.ToString());
             ProfileImg.Source = new BitmapImage(link);
 
-            // Fields
+
+            // FIELDS
             FirstName.Text = client.fname.ToString();
             LastName.Text = client.lname;
             Balance.Text = client.bal.ToString("C");
@@ -132,16 +122,16 @@ namespace Async_Client
 
         }
 
+
         private async void SearchBtnClick(object sender, RoutedEventArgs e)
         {
 
             searchText = SearchBox.Text;
 
-            // Exception handing for Search Box and code clean up
+            // EXCEPTION HANDING AND CLEANUP
             if (!InvalidCharacters(searchText) && !searchText.All(char.IsDigit))
             {
 
-                // Async 
                 ProgressBarValue(10);
                 CloseUI();
 
@@ -172,7 +162,6 @@ namespace Async_Client
             RestRequest restRequest;
             RestResponse restResponse;
             DataIntermed client;
-
 
 
             SearchData clientSearch = new SearchData();
@@ -208,35 +197,39 @@ namespace Async_Client
 
                 IndexNum.Dispatcher.Invoke(new Action(() => IndexNum.Text = ""));
 
-                Uri link = new Uri(client.img);
+
+
+
+                // PROFILE PICTURE
+                Uri link = new Uri(client.img, UriKind.Absolute);
                 Console.WriteLine(link.ToString());
+                ProfileImg.Dispatcher.Invoke(new Action(() => ProfileImg.Source = new BitmapImage(link)));
 
                 ProgressBarValue(90);
 
-                ProfileImg.Dispatcher.Invoke(new Action(() => ProfileImg.Source = new BitmapImage(link)));
 
 
                 StartUI();
-                return "Request Completed";
+                return "VALID REQUEST";
 
             }
             else
             {
                 ProgressBarValue(0);
-                return "Search Not Found";
+                return "NOT FOUND";
 
             }
 
         }
 
 
-        // Character Checking In Search bar
+        // CHARACTER CHECKING IN SEARCH BAR
         private bool InvalidCharacters(string yourString)
         {
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
 
-        // Progress Bar
+        // PROGRESS BAR
         private void ProgressBarValue(int value)
         {
             ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.Value = value));
@@ -258,10 +251,10 @@ namespace Async_Client
             SearchBtn.Dispatcher.Invoke(new Action(() => SearchBtn.IsEnabled = true));
         }
 
-        private void ConfirmURL_Click(object sender, RoutedEventArgs e)
+        private void url_box_click(object sender, RoutedEventArgs e)
         {
-            BaseURL = URLInput.Text;
-            CurrentBaseURL.Text = BaseURL;
+            base_url = url_box.Text;
+            url_display.Text = base_url;
         }
 
     }
